@@ -4,9 +4,9 @@ Groupe 11 (Youssra IBRAHIMI, Io ALFANO, Assia HAFID)
 ## DOM Based XSS  
 **Prérequis :**<br/>
 Télécharger les fichiers du github, et lancer un serveur localhost sur le port de votre choix dans le dossier was-grp11/<br/>
-On peut créer un bouton de la manière suivante http://localhost:port/dom_xss_1/atk_dom_xss_1.html?button=My%20custom%20button <br/>
+On peut créer un bouton de la manière suivante http://localhost:8080/dom_xss_1/atk_dom_xss_1.html?button=My%20custom%20button <br/>
 **Attaque :** <br/>
-Aller sur la page http://localhost:port/dom_xss_1/atk_dom_xss_1.html?button=<script>alert(document.cookie)</script> <br/>
+Aller sur la page http://localhost:8080/dom_xss_1/atk_dom_xss_1.html?button=<script>alert(document.cookie)</script> <br/>
 Cela va générer une alerte avec le cookie. Le serveur va générer un objet DOM sans vérifier si le code contient un script malveillant. <br/>
 **Defense :**<br/>
 Pour contrer ce type d’attaque il faut utiliser un outil pour nettoyer le code avant de l’ajouter au DOM. Nous avons utilisé DOMPurify. <br/>
@@ -15,11 +15,11 @@ Quand du code JavaScript est repéré, il est supprimé avant d'être ajouté da
 ## Password Salting
 **Prérequis :**<br/>
 Télécharger les fichiers du github, et lancer un serveur localhost sur le port de votre choix dans le dossier was-grp11/<br/>
-Initilisaliser la base de données en faisant `<sudo mysql < init_db_password.sql>`.<br/>
+Initilisaliser la base de données en faisant `sudo mysql < init_db_password.sql`.<br/>
 La page HTML permet de s’authentifier sur le compte de l’administrateur. Le serveur va récupérer le mot de passe de l’administrateur qui vaut MD5(‘admin123’) et va le comparer au mot de passe à tester sur lequel la fonction MD5 a été appliquée.<br/>
 De cette manière un attaquant peut facilement retrouver le mot de passe grâce à des rainbow tables.<br/>
 **Attaque :** <br/>
-http://localhost:port/atk_password.php?password=admin123<br/>
+http://localhost:8080/atk_password.php?password=admin123<br/>
 **Defense :**<br/>
 Pour générer un nouveau mot de passe nous avons utilisé le code suivant :<br/>
 `$salt = bin2hex(openssl_random_pseudo_bytes(22));`<br/>
