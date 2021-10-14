@@ -11,6 +11,7 @@ Cela va générer une alerte avec le cookie. Le serveur va générer un objet DO
 **Defense :**<br/>
 Pour contrer ce type d’attaque il faut utiliser un outil pour nettoyer le code avant de l’ajouter au DOM. Nous avons utilisé DOMPurify. <br/>
 Quand du code JavaScript est repéré, il est supprimé avant d'être ajouté dans le DOM.<br/>
+http://localhost:8080/dom_xss_1/def_dom_xss_1.html?button=<script>alert(document.cookie)</script><br/>
 <br/>
 ## Password Salting
 **Prérequis :**<br/>
@@ -25,6 +26,7 @@ Pour générer un nouveau mot de passe nous avons utilisé le code suivant :<br/
 `$salt = bin2hex(openssl_random_pseudo_bytes(22));`<br/>
 `$hash = crypt($_GET['password'], "$2a$12$".$salt);`<br/>
 De cette manière un salt est généré aléatoirement pour chaque mot de passe et l’utilisation de rainbow tables devient plus compliqué.<br/>
+http://localhost:8080/password/def_password.php?password=admin123<br/>
 <br/>
 ## Session HttpOnly
 Il faut lancer un serveur sur le port de votre choix (8080) dans le dossier *was-grp11/* et un autre sur le port 8089 (vous pouvez en choisir un autre mais il faut modifier le fichier vulnérable) dans le dossier *bad_session/*.<br/>
@@ -35,6 +37,7 @@ L’attaquant a déposé un lien permettant d’envoyer une requête contenant l
 http://localhost:8080/session/vulnerable_session_httponly.php <br/>
 **Defense :**<br/>
 Pour protéger ce site de ce genre d’attaque, il faut préciser aux navigateurs d’utiliser HttpOnly. De cette manière, un attaquant ne pourra pas récupérer des données contenues dans les cookies.<br/>
+http://localhost:8080/session/def_session_httponly.php <br/>
 ![image](https://user-images.githubusercontent.com/54988405/137313105-bded2987-aeda-411d-84d9-6041ad80afa8.png)
 <br/>
 ## Session ID Length
