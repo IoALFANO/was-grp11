@@ -19,7 +19,7 @@ Initilisaliser la base de données en faisant `<sudo mysql < init_db_password.sq
 La page HTML permet de s’authentifier sur le compte de l’administrateur. Le serveur va récupérer le mot de passe de l’administrateur qui vaut MD5(‘admin123’) et va le comparer au mot de passe à tester sur lequel la fonction MD5 a été appliquée.<br/>
 De cette manière un attaquant peut facilement retrouver le mot de passe grâce à des rainbow tables.<br/>
 **Attaque :** <br/>
-http://localhost:8080/def_password.php?password=admin123<br/>
+http://localhost:port/atk_password.php?password=admin123<br/>
 **Defense :**<br/>
 Pour générer un nouveau mot de passe nous avons utilisé le code suivant :<br/>
 `<$salt = bin2hex(openssl_random_pseudo_bytes(22));>`<br/>
