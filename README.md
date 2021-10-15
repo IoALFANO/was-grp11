@@ -3,7 +3,7 @@ Groupe 11 (Youssra IBRAHIMI, Io ALFANO, Assia HAFID)
 <br>
 ## XSS Rule 0
 Cette règle déconseille d’utiliser des données qui peuvent être modifiées dans des balises pouvant exécuter du code.
-Le programme vulnérable contient une balise script qui récupère la valeur associée à un paramètre. Avec cette valeur, il est possible de modifier la syntaxe du script pour exécuter un autre code.
+Le programme vulnérable contient une balise script qui récupère la valeur associée à un paramètre. Avec cette valeur, il est possible de modifier la syntaxe du script pour exécuter un autre code.<br>
 **Attaque :**<br>
 Si on modifie la valeur du paramètre name dans l’URL il est possible d’exécuter du code si la balise php est contenue dans une balise script.
 Par exemple, si on remplace la valeur du paramètre name par alert(document.cookie) cela va ouvrir une boîte d’alerte et afficher le cookie.
