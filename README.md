@@ -107,6 +107,9 @@ Pour améliorer la défense du site il faut augmenter la taille du session ID. E
 **Defense :**<br/>
 <br>
 ## Session Max-Age <br>
+Il est possible de créer des cookies persistent et des cookies non-persistents. Il est recommandé de ne pas créer de cookie persistent sinon un attaquant pourra accéder au cookie plus facilement.<br>
 **Attaque :** <br/>
+Quand on définit une date d'expiration a un cookie, celui-ci ne se supprimera pas si le navigateur est fermé.<br>
 <br/>
 **Defense :**<br/>
+Il faut créer les cookies pour qu'ils ne soient persistent, de cette manière ils se ferment quand la session est fermé.
